@@ -1,6 +1,6 @@
 var questions = 73;
 
-var DM = [["Português", 9.3910, 2.0529], ["Ling. Estrangeira", 3.6627, 1.6272], ["Redação", 6.1166, 1.0908], ["Matemática", 2.4469, 1.3664], ["Física", 3.0578, 1.4688], ["Biologia", 3.9480, 1.4346], ["Química", 2.2325, 1.3198], ["História", 4.2666, 1.7146], ["Geografia", 4.5413, 1.1729]]
+var DM = [['Português', 9.4515, 2.1683], ['Ling. Estrangeira', 3.7786, 1.5851], ['Física', 2.8828, 1.3839], ['Matemática', 2.442, 1.3301], ['História', 3.9633, 1.6585], ['Biologia', 3.4788, 1.4024], ['Geografia', 4.8131, 1.3539], ['Química', 3.3356, 1.2555], ['Redação', 6.1373, 1.1786]]
 
 function simularScore() {
     var SUMETdisc = 0;
