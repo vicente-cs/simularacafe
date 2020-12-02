@@ -1,9 +1,24 @@
 var questions = 73;
 
-var DM = [['Português', 9.4515, 2.1683], ['Ling. Estrangeira', 3.7786, 1.5851], ['Física', 2.8828, 1.3839], ['Matemática', 2.442, 1.3301], ['História', 3.9633, 1.6585], ['Biologia', 3.4788, 1.4024], ['Geografia', 4.8131, 1.3539], ['Química', 3.3356, 1.2555], ['Redação', 6.1373, 1.1786]]
+const DM = [[[9.4515, 2.1683], [9.391, 2.0529], [8.0647, 2.1639], [10.4171, 2.3617], [9.9333, 2.0949]], //Português
+[[3.7786, 1.5851], [3.6627, 1.6272], [3.8, 1.6211], [3.6507, 1.7198], [4.0011, 1.3723]], //Líng. Estrangeira
+[[2.8828, 1.3839], [3.0578, 1.4688], [2.7628, 1.4198], [3.2335, 1.2664], [2.4771, 1.3807]], //Física
+[[2.442, 1.3301], [2.4469, 1.3664], [2.2443, 1.3205], [2.6477, 1.3634], [2.4292, 1.2701]], //Matemática
+[[3.9633, 1.6585], [4.2666, 1.7146], [4.3575, 1.7604], [3.4983, 1.5646], [3.7311, 1.5945]], //História
+[[3.4788, 1.4024], [3.948, 1.4346], [3.1512, 1.419], [3.5935, 1.3698], [3.2225, 1.3863]], //Biologia
+[[4.8131, 1.3539], [4.5413, 1.1729], [4.4732, 1.5445], [5.516, 1.1297], [4.722, 1.5685]], //Geografia
+[[3.3356, 1.2555], [2.2325, 1.3198], [5.067, 1.0781], [3.4715, 1.0977], [2.5715, 1.5266]], //Química
+[[6.1373, 1.1786], [6.1166, 1.0908], [6.3069, 1.1294], [6.0408, 1.2767], [6.0849, 1.2178]]] //Redação
+
+Number.prototype.toFixedDown = function(digits) {
+    var re = new RegExp("(\\d+\\.\\d{" + digits + "})(\\d)"),
+        m = this.toString().match(re);
+    return m ? parseFloat(m[1]) : this.valueOf();
+};
 
 function simularScore() {
-    var SUMETdisc = 0;
+    var score_num = DM[0].length;
+    var SUMETdisc = Array.from({length:score_num}, i => 0);
     var forms = document.getElementsByClassName("score");
 
     for (i = 0; i < forms.length; i++) {
@@ -19,12 +34,24 @@ function simularScore() {
             subject_questions = 7;
         }
         
-        var ETdisc = 500 + 100 * ((Adisc - DM[i][1])/DM[i][2]) * (subject_questions / questions);
-        SUMETdisc += ETdisc;
+        for (b = 0; b < score_num; b++) {
+        var ETdisc = 500 + 100 * ((Adisc - DM[i][b][0])/DM[i][b][1]) * (subject_questions / questions);
+        SUMETdisc[b] += ETdisc;
+        }
     }
+
+    for (i=0;i<SUMETdisc.length;i++) {
+        SUMETdisc[i] = SUMETdisc[i].toFixedDown(4)
+    }
+
     var result_display = document.getElementById("result_div");
-    result_display.style.display = "inline";
+    result_display.style.display = "inline-block";
     
     var result_text = document.getElementById("result_text");
-    result_text.innerHTML = "Nota estimada: " + SUMETdisc;
+    result_text.innerHTML = 
+    "Escore médio: " + SUMETdisc[0] + "<br>" +
+    "Escore Vestibular de Verão 2020: " + SUMETdisc[1] + "<br>" +
+    "Escore Vestibular de Inverno 2019: " + SUMETdisc[2] + "<br>" +
+    "Escore Vestibular de Verão 2017: " + SUMETdisc[3] + "<br>" +
+    "Escore Vestibular de Verão 2016: " + SUMETdisc[4];
 }
