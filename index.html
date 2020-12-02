@@ -14,7 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <title>Simular Nota Acafe</title>
+    <title>Simular Nota Acafe Medicina</title>
     <script src="calc.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTEP3VH6EM"></script>
@@ -43,23 +43,24 @@
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-12">
-                <div class="form-group text-center w-35 w-md-100 mx-auto">
-                    <h1 class="h3 mb-3 font-weight-normal">Simulador de Nota Acafe</h1>
-                    <input type="number" class="form-control score" placeholder="Português" min="0" max="14">
-                    <input type="number" class="form-control score" placeholder="Língua Estrangeira" min="0" max="7">
-                    <input type="number" class="form-control score" placeholder="Física" min="0" max="10">
-                    <input type="number" class="form-control score" placeholder="Matemática" min="0" max="7">
-                    <input type="number" class="form-control score" placeholder="História" min="0" max="7">
-                    <input type="number" class="form-control score" placeholder="Biologia" min="0" max="7">
-                    <input type="number" class="form-control score" placeholder="Geografia" min="0" max="7">
-                    <input type="number" class="form-control score" placeholder="Química" min="0" max="7">
-                    <input type="number" class="form-control score" placeholder="Redação" min="0" max="7">
-                    <button type="button" class="btn btn-success mt-3" onclick="simularScore()">Calcular</button>
-                    <div class="col-12" id="result_div" style="display: none;">
+                <div class="form-group text-center">
+                    <div class="w-35 w-md-100 mx-auto">
+                        <h1 class="h3 mb-3 font-weight-normal">Simulador de Nota Acafe Medicina</h1>
+                        <input type="number" class="form-control score" placeholder="Português" min="0" max="14">
+                        <input type="number" class="form-control score" placeholder="Língua Estrangeira" min="0"max="7">
+                        <input type="number" class="form-control score" placeholder="Física" min="0" max="10">
+                        <input type="number" class="form-control score" placeholder="Matemática" min="0" max="7">
+                        <input type="number" class="form-control score" placeholder="História" min="0" max="7">
+                        <input type="number" class="form-control score" placeholder="Biologia" min="0" max="7">
+                        <input type="number" class="form-control score" placeholder="Geografia" min="0" max="7">
+                        <input type="number" class="form-control score" placeholder="Química" min="0" max="7">
+                        <input type="number" class="form-control score" placeholder="Redação" min="0" max="7">
+                        <button type="button" class="btn btn-success mt-3" onclick="simularScore()">Calcular</button>
+                    </div>
+                    <div id="result_div" class="w-50 w-md-100" style="display: none;">
                         <p class="mt-3" id="result_text"></p>
                         <p>
-                            *Valor estimado através de dados de vestibulares passados, esta nota pode não refletir no
-                            resultado final.
+                            *Valores estimados através de dados de vestibulares passados, estes escores podem ser aproximações e não necessariamente refletem no resultado final.
                         </p>
                     </div>
                     <div class="col-12">
