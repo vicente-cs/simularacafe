@@ -25,13 +25,25 @@
 
         gtag('config', 'G-VTEP3VH6EM');
     </script>
+    <style>
+        .w-35 {
+            width: 35% !important;
+        }
+
+        @media (max-width: 768px) {
+            .w-md-100 {
+                width: 75% !important;
+            }
+
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="h-100 d-flex justify-content-center align-items-center">
-            <div class="col-lg-5 col-12">
-                <div class="form-group text-center">
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12">
+                <div class="form-group text-center w-35 w-md-100 mx-auto">
                     <h1 class="h3 mb-3 font-weight-normal">Simulador de Nota Acafe</h1>
                     <input type="number" class="form-control score" placeholder="Português" min="0" max="14">
                     <input type="number" class="form-control score" placeholder="Língua Estrangeira" min="0" max="7">
@@ -58,4 +70,5 @@
         </div>
     </div>
 </body>
+
 </html>
