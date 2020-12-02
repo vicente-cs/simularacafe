@@ -12,7 +12,7 @@ function simularScore() {
         if (i == 0) {
             subject_questions = 14;
         }
-        else if (i == 2) {
+        else if (i == 8) {
             subject_questions = 10;
         }
         else {
