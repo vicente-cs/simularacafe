@@ -46,15 +46,15 @@
                 <div class="form-group text-center">
                     <div class="w-35 w-md-100 mx-auto">
                         <h1 class="h3 mb-3 font-weight-normal">Simulador de Nota Acafe Medicina</h1>
-                        <input type="number" class="form-control score" placeholder="Português" min="0" max="14">
-                        <input type="number" class="form-control score" placeholder="Língua Estrangeira" min="0"max="7">
-                        <input type="number" class="form-control score" placeholder="Física" min="0" max="10">
-                        <input type="number" class="form-control score" placeholder="Matemática" min="0" max="7">
-                        <input type="number" class="form-control score" placeholder="História" min="0" max="7">
-                        <input type="number" class="form-control score" placeholder="Biologia" min="0" max="7">
-                        <input type="number" class="form-control score" placeholder="Geografia" min="0" max="7">
-                        <input type="number" class="form-control score" placeholder="Química" min="0" max="7">
-                        <input type="number" class="form-control score" placeholder="Redação" min="0" max="10">
+                        <input type="number" class="form-control score" id="portugues" placeholder="Português" min="0" max="14">
+                        <input type="number" class="form-control score" id="ling_estrangeira" placeholder="Língua Estrangeira" min="0"max="7">
+                        <input type="number" class="form-control score" id="fisica" placeholder="Física" min="0" max="10">
+                        <input type="number" class="form-control score" id="matematica" placeholder="Matemática" min="0" max="7">
+                        <input type="number" class="form-control score" id="historia" placeholder="História" min="0" max="7">
+                        <input type="number" class="form-control score" id="biologia" placeholder="Biologia" min="0" max="7">
+                        <input type="number" class="form-control score" id="geografia" placeholder="Geografia" min="0" max="7">
+                        <input type="number" class="form-control score" id="quimica" placeholder="Química" min="0" max="7">
+                        <input type="number" class="form-control score" id="redacao" placeholder="Redação" min="0" max="10">
                         <button type="button" class="btn btn-success mt-3" onclick="simularScore()">Calcular</button>
                     </div>
                     <div id="result_div" class="w-50 w-md-100" style="display: none;">
@@ -62,9 +62,6 @@
                         <p>
                             *Valores estimados através de dados de vestibulares passados, estes escores podem ser aproximações e não necessariamente refletem no resultado final.
                         </p>
-                    </div>
-                    <div class="col-12">
-                        <p class="mt-3">*Valores imprecisos foram corrigidos em 02/12/2020 às 08:21</p>
                     </div>
                 </div>
             </div>
