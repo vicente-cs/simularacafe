@@ -42,14 +42,14 @@ function simularScore() {
         
     }
 
-    var average = 0
+    var average = 0;
 
     for (i=0;i<SUMETdisc.length;i++) {
-        SUMETdisc[i] = SUMETdisc[i].toFixedDown(4)
-        average += SUMETdisc[i]
+        SUMETdisc[i] = SUMETdisc[i].toFixedDown(4);
+        average += SUMETdisc[i];
     }
 
-    average = average / SUMETdisc.length
+    average = average / SUMETdisc.length;
 
     var result_display = document.getElementById("result_div");
     result_display.style.display = "inline-block";
