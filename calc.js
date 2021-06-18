@@ -49,7 +49,7 @@ function simularScore() {
         average += SUMETdisc[i];
     }
 
-    average = average / SUMETdisc.length;
+    average /= SUMETdisc.length;
 
     var result_display = document.getElementById("result_div");
     result_display.style.display = "inline-block";
