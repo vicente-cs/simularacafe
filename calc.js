@@ -49,7 +49,7 @@ function simularScore() {
     result_display.style.display = "inline-block";
     
     var result_text = document.getElementById("result_text");
-    var preprocessed_result_text = `Escore médio: ${average}` //Constructs text before editing inner html
+    var preprocessed_result_text = `Escore médio: ${average}` //Constrói texto antes de mudar o conteúdo do HTML
 
     var exam_period = ["Verão 2021", "Verão 2020", "Inverno 2019", "Verão 2017", "Verão 2016"]
     for (i=0;i<exam_period.length;i++) {
