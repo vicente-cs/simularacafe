@@ -23,17 +23,11 @@ function simularScore() {
 
     for (var key in DM) {
         var Adisc = forms[key].value;
-        var subject_questions;
+        var subject_questions = 7;
 
-        if (key == "portugues") {
-            subject_questions = 14;
-        }
-        else if (key == "redacao") {
-            subject_questions = 10;
-        }
-        else {
-            subject_questions = 7;
-        }
+        var special_subject = {"portugues": 14, "redacao": 10};
+
+        if (key in special_subject) subject_questions = special_subject[key]
         
         for (b = 0; b < score_num; b++) {
         var ETdisc = 500 + 100 * ((Adisc - DM[key][b][0])/DM[key][b][1]) * (subject_questions / questions);
@@ -42,24 +36,25 @@ function simularScore() {
         
     }
 
-    var average = 0;
+    var average = 0
 
     for (i=0;i<SUMETdisc.length;i++) {
-        SUMETdisc[i] = SUMETdisc[i].toFixedDown(4);
-        average += SUMETdisc[i];
+        SUMETdisc[i] = SUMETdisc[i].toFixedDown(4)
+        average += SUMETdisc[i]
     }
 
-    average /= SUMETdisc.length;
+    average = average / SUMETdisc.length
 
     var result_display = document.getElementById("result_div");
     result_display.style.display = "inline-block";
     
     var result_text = document.getElementById("result_text");
-    result_text.innerHTML = 
-    "Escore médio: " + average + "<br>" +
-    "Escore Vestibular de Verão 2021: " + SUMETdisc[0] + "<br>" +
-    "Escore Vestibular de Verão 2020: " + SUMETdisc[1] + "<br>" +
-    "Escore Vestibular de Inverno 2019: " + SUMETdisc[2] + "<br>" +
-    "Escore Vestibular de Verão 2017: " + SUMETdisc[3] + "<br>" +
-    "Escore Vestibular de Verão 2016: " + SUMETdisc[4];
+    var preprocessed_result_text = `Escore médio: ${average}` //Constructs text before editing inner html
+
+    var exam_period = ["Verão 2021", "Verão 2020", "Inverno 2019", "Verão 2017", "Verão 2016"]
+    for (i=0;i<exam_period.length;i++) {
+        preprocessed_result_text += `<br>Escore Vestibular de ${exam_period[i]}: ${SUMETdisc[i]}`;
+    }
+
+    result_text.innerHTML = preprocessed_result_text;
 }
