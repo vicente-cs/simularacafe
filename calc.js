@@ -7,7 +7,7 @@ Number.prototype.toFixedDown = function (digits) {
 };
 
 function simularScore() {
-    var score_num = DM["portugues"].length; //O comprimento do dict "DM" deve ser igual em todas as matérias, qualquer valor da constante pode ser utilizado
+    var score_num = DM.length; //O comprimento do dict "DM" deve ser igual em todas as matérias, qualquer valor da constante pode ser utilizado
     var SUMETdisc = Array.from({ length: score_num }, i => 0);
     var forms = document.getElementsByClassName("score");
 
