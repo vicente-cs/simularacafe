@@ -1,5 +1,4 @@
-var questions = 73;
-
+//Limita o número de casas após a vírgula
 Number.prototype.toFixedDown = function (digits) {
     var re = new RegExp("(\\d+\\.\\d{" + digits + "})(\\d)"),
         m = this.toString().match(re);
@@ -7,44 +6,62 @@ Number.prototype.toFixedDown = function (digits) {
 };
 
 function simularScore() {
-    var score_num = DM.length; //O comprimento do dict "DM" deve ser igual em todas as matérias, qualquer valor da constante pode ser utilizado
-    var SUMETdisc = Array.from({ length: score_num }, i => 0);
+    //Array com o escore de todos os anos listados em data.js
+    var scores = [];
+
+    var questions_num = {
+        "portugues": 14,
+        "ling_estrangeira": 7,
+        "fisica": 7,
+        "matematica": 7,
+        "historia": 7,
+        "biologia": 7,
+        "geografia": 7,
+        "quimica": 7,
+        "redacao": 10
+    }
+
+    //Texto final, que demonstrará os resultados
+    var result_text = ""
+
+    //Notas
     var forms = document.getElementsByClassName("score");
 
-    for (var key in DM) {
-        var Adisc = forms[key].value;
-        var subject_questions = 7;
 
-        var special_subject = { "portugues": 14, "redacao": 10 };
+    //Iteração entre anos
+    for (i = 0; i < DM.length; i++) {
 
-        if (key in special_subject) subject_questions = special_subject[key]
+        //Somatório de escores de apenas uma edição
+        var exam_score = 0
 
-        for (b = 0; b < score_num; b++) {
-            var ETdisc = 500 + 100 * ((Adisc - DM[key][b][0]) / DM[key][b][1]) * (subject_questions / questions);
-            SUMETdisc[b] += ETdisc;
+        //Iteração entre matérias
+        for (var subject in DM[i]["subjects"]) {
+            const Adisc = forms[subject].value;
+            const Mdisc = DM[i]["subjects"][subject]["Mdisc"];
+            const DPisc = DM[i]["subjects"][subject]["DPdisc"];
+            const P = questions_num[subject] / 73;
+
+            //Escore transformado da disciplina
+            const ETdisc = 500 + 100 * ((Adisc - Mdisc) / DPisc) * P;
+            exam_score += ETdisc;
         }
 
+        scores.push(exam_score)
+        //Nome da edição do vestibular, ex: "Vestibular de Verão 2020"
+        const exam_name = DM[i]["name"];
+
+        //Adiciona texto à resposta final que aparecerá ao usuário.
+        result_text += `<br>Escore Vestibular de ${exam_name}: ${exam_score.toFixedDown(4)}`;
     }
 
-    var average = 0
+    let average = (array) => array.reduce((a, b) => a + b) / array.length;
 
-    for (i = 0; i < SUMETdisc.length; i++) {
-        SUMETdisc[i] = SUMETdisc[i].toFixedDown(4)
-        average += SUMETdisc[i]
-    }
 
-    average = average / SUMETdisc.length
+    //Adiciona a média de todos os escores ao texto de resposta
+    result_text = `Escore médio: ${average(scores).toFixed(4)}` + result_text
 
     var result_display = document.getElementById("result_div");
     result_display.style.display = "inline-block";
+    result_display.innerHTML = result_text;
 
-    var result_text = document.getElementById("result_text");
-    var preprocessed_result_text = `Escore médio: ${average}` //Constrói texto antes de mudar o conteúdo do HTML
-
-    var exam_period = ["Verão 2021", "Verão 2020", "Inverno 2019", "Verão 2017", "Verão 2016"]
-    for (i = 0; i < exam_period.length; i++) {
-        preprocessed_result_text += `<br>Escore Vestibular de ${exam_period[i]}: ${SUMETdisc[i]}`;
-    }
-
-    result_text.innerHTML = preprocessed_result_text;
 }
